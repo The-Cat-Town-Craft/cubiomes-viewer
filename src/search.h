@@ -5,6 +5,8 @@
 
 #include <atomic>
 #include <vector>
+#include <QString>
+#include <QObject>
 
 #define PRECOMPUTE48_BUFSIZ ((int64_t)1 << 30)
 
@@ -33,8 +35,8 @@ struct FilterInfo
     int dim;    // dimension
     int disp;   // display order
     const char *icon;
-    const char *name;
-    const char *description;
+    QString name;
+    QString description;
 };
 
 enum
@@ -105,322 +107,322 @@ static const struct FilterList
         list[F_QH_IDEAL] = FilterInfo{
             CAT_QUAD, 1, 1, 0, Swamp_Hut, 512, 0, MC_1_4, 0, disp++,
             ":icons/quad.png",
-            "Quad-hut (ideal)",
-            "The lower 48-bits provide potential for four swamp huts in "
-            "spawning range, in one of the best configurations that exist."
+            QObject::tr("Quad-hut (ideal)"),
+            QObject::tr("The lower 48-bits provide potential for four swamp huts in "
+            "spawning range, in one of the best configurations that exist.")
         };
 
         list[F_QH_CLASSIC] = FilterInfo{
             CAT_QUAD, 1, 1, 0, Swamp_Hut, 512, 0, MC_1_4, 0, disp++,
             ":icons/quad.png",
-            "Quad-hut (classic)",
-            "The lower 48-bits provide potential for four swamp huts in "
+            QObject::tr("Quad-hut (classic)"),
+            QObject::tr("The lower 48-bits provide potential for four swamp huts in "
             "spawning range, in one of the \"classic\" configurations. "
             "(Checks for huts in the nearest 2x2 chunk corners of each "
-            "region.)"
+            "region.)")
         };
 
         list[F_QH_NORMAL] = FilterInfo{
             CAT_QUAD, 1, 1, 0, Swamp_Hut, 512, 0, MC_1_4, 0, disp++,
             ":icons/quad.png",
-            "Quad-hut (normal)",
-            "The lower 48-bits provide potential for four swamp huts in "
+            QObject::tr("Quad-hut (normal)"),
+            QObject::tr("The lower 48-bits provide potential for four swamp huts in "
             "spawning range, such that all of them are within 128 blocks "
             "of a single AFK location, including a vertical tollerance "
-            "for a fall damage chute."
+            "for a fall damage chute.")
         };
 
         list[F_QH_BARELY] = FilterInfo{
             CAT_QUAD, 1, 1, 0, Swamp_Hut, 512, 0, MC_1_4, 0, disp++,
             ":icons/quad.png",
-            "Quad-hut (barely)",
-            "The lower 48-bits provide potential for four swamp huts in "
+            QObject::tr("Quad-hut (barely)"),
+            QObject::tr("The lower 48-bits provide potential for four swamp huts in "
             "spawning range, in any configuration, such that the bounding "
-            "boxes are within 128 blocks of a single AFK location."
+            "boxes are within 128 blocks of a single AFK location.")
         };
 
         list[F_QM_95] = FilterInfo{
             CAT_QUAD, 1, 1, 0, Monument, 512, 0, MC_1_8, 0, disp++,
             ":icons/quad.png",
-            "Quad-ocean-monument (>95%)",
-            "The lower 48-bits provide potential for 95% of the area of "
+            QObject::tr("Quad-ocean-monument (>95%)"),
+            QObject::tr("The lower 48-bits provide potential for 95% of the area of "
             "four ocean monuments to be within 128 blocks of an AFK "
-            "location."
+            "location.")
         };
 
         list[F_QM_90] = FilterInfo{
             CAT_QUAD, 1, 1, 0, Monument, 512, 0, MC_1_8, 0, disp++,
             ":icons/quad.png",
-            "Quad-ocean-monument (>90%)",
-            "The lower 48-bits provide potential for 90% of the area of "
+            QObject::tr("Quad-ocean-monument (>90%)"),
+            QObject::tr("The lower 48-bits provide potential for 90% of the area of "
             "four ocean monuments to be within 128 blocks of an AFK "
-            "location."
+            "location.")
         };
 
         list[F_BIOME] = FilterInfo{
             CAT_BIOMES, 1, 1, L_VORONOI_1, 0, 1, 0, MC_1_0, 0, disp++,
             ":icons/map.png",
-            "Biome filter 1:1",
-            "Only seeds with the included (+) biomes in the specified area and "
-            "discard those that have biomes that are explicitly excluded (-)."
+            QObject::tr("Biome filter 1:1"),
+            QObject::tr("Only seeds with the included (+) biomes in the specified area and "
+            "discard those that have biomes that are explicitly excluded (-).")
         };
 
         list[F_BIOME_4_RIVER] = FilterInfo{
             CAT_BIOMES, 1, 1, L_RIVER_MIX_4, 0, 4, 0, MC_1_0, 0, disp++,
             ":icons/map.png",
-            "Biome filter 1:4 RIVER",
-            "Only seeds with the included (+) biomes in the specified area and "
+            QObject::tr("Biome filter 1:4 RIVER"),
+            QObject::tr("Only seeds with the included (+) biomes in the specified area and "
             "discard those that have biomes that are explicitly excluded (-) "
-            "at layer RIVER with scale 1:4."
+            "at layer RIVER with scale 1:4.")
         };
 
         list[F_BIOME_16_SHORE] = FilterInfo{
             CAT_BIOMES, 1, 1, L_SHORE_16, 0, 16, 0, MC_1_1, 0, disp++,
             ":icons/map.png",
-            "Biome filter 1:16 SHORE",
-            "Only seeds with the included (+) biomes in the specified area and "
+            QObject::tr("Biome filter 1:16 SHORE"),
+            QObject::tr("Only seeds with the included (+) biomes in the specified area and "
             "discard those that have biomes that are explicitly excluded (-) "
-            "at layer SHORE with scale 1:16."
+            "at layer SHORE with scale 1:16.")
         };
 
         list[F_BIOME_64_RARE] = FilterInfo{
             CAT_BIOMES, 1, 1, L_SUNFLOWER_64, 0, 64, 0, MC_1_7, 0, disp++,
             ":icons/map.png",
-            "Biome filter 1:64 RARE",
-            "Only seeds with the included (+) biomes in the specified area and "
+            QObject::tr("Biome filter 1:64 RARE"),
+            QObject::tr("Only seeds with the included (+) biomes in the specified area and "
             "discard those that have biomes that are explicitly excluded (-) "
-            "at layer RARE/SUNFLOWER with scale 1:64."
+            "at layer RARE/SUNFLOWER with scale 1:64.")
         };
 
         list[F_BIOME_256_BIOME] = FilterInfo{
             CAT_BIOMES, 1, 1, L_BIOME_256, 0, 256, 0, MC_1_0, 0, disp++,
             ":icons/map.png",
-            "Biome filter 1:256 BIOME",
-            "Only seeds with the included (+) biomes in the specified area and "
+            QObject::tr("Biome filter 1:256 BIOME"),
+            QObject::tr("Only seeds with the included (+) biomes in the specified area and "
             "discard those that have biomes that are explicitly excluded (-) "
-            "at layer BIOME with scale 1:256."
+            "at layer BIOME with scale 1:256.")
         };
 
         list[F_BIOME_256_OTEMP] = FilterInfo{
             CAT_BIOMES, 1, 1, L_OCEAN_TEMP_256, 0, 256, 0, MC_1_13, 0, disp++,
             ":icons/map.png",
-            "Biome filter 1:256 O.TEMP",
-            "Only seeds with the included (+) biomes in the specified area and "
+            QObject::tr("Biome filter 1:256 O.TEMP"),
+            QObject::tr("Only seeds with the included (+) biomes in the specified area and "
             "discard those that have biomes that are explicitly excluded (-) "
             "at layer OCEAN TEMPERATURE with scale 1:256. "
-            "This generation layer depends only on the lower 48-bits of the seed."
+            "This generation layer depends only on the lower 48-bits of the seed.")
         };
 
         list[F_TEMPS] = FilterInfo{
             CAT_BIOMES, 1, 1, 0, 0, 1024, 0, MC_1_7, 0, disp++,
             ":icons/tempcat.png",
-            "Temperature categories",
-            "Checks that the area has a minimum of all the required temperature categories."
+            QObject::tr("Temperature categories"),
+            QObject::tr("Checks that the area has a minimum of all the required temperature categories.")
         };
 
         list[F_BIOME_NETHER_1] = FilterInfo{
             CAT_NETHER, 1, 1, 0, 0, 1, 0, MC_1_16, -1, disp++,
             ":icons/nether.png",
-            "Nether biome filter 1:1",
-            "Nether biomes after voronoi scaling to 1:1. (height: y = 0)"
+            QObject::tr("Nether biome filter 1:1"),
+            QObject::tr("Nether biomes after voronoi scaling to 1:1. (height: y = 0)")
         };
         list[F_BIOME_NETHER_4] = FilterInfo{
             CAT_NETHER, 1, 1, 0, 0, 4, 0, MC_1_16, -1, disp++,
             ":icons/nether.png",
-            "Nether biome filter 1:4",
-            "Nether biomes with normal noise sampling at scale 1:4. (height: y = 0) "
-            "(The Nether and End depend only on the lower 48-bits of the seed.)"
+            QObject::tr("Nether biome filter 1:4"),
+            QObject::tr("Nether biomes with normal noise sampling at scale 1:4. (height: y = 0) "
+            "(The Nether and End depend only on the lower 48-bits of the seed.)")
         };
         list[F_BIOME_NETHER_16] = FilterInfo{
             CAT_NETHER, 1, 1, 0, 0, 16, 0, MC_1_16, -1, disp++,
             ":icons/nether.png",
-            "Nether biome filter 1:16",
-            "Nether biomes, but only sampled at scale 1:16. (height: y = 0) "
-            "(The Nether and End depend only on the lower 48-bits of the seed.)"
+            QObject::tr("Nether biome filter 1:16"),
+            QObject::tr("Nether biomes, but only sampled at scale 1:16. (height: y = 0) "
+            "(The Nether and End depend only on the lower 48-bits of the seed.)")
         };
         list[F_BIOME_NETHER_64] = FilterInfo{
             CAT_NETHER, 1, 1, 0, 0, 64, 0, MC_1_16, -1, disp++,
             ":icons/nether.png",
-            "Nether biome filter 1:64",
-            "Nether biomes, but only sampled at scale 1:64, (height: y = 0) "
-            "(The Nether and End depend only on the lower 48-bits of the seed.)"
+            QObject::tr("Nether biome filter 1:64"),
+            QObject::tr("Nether biomes, but only sampled at scale 1:64, (height: y = 0) "
+            "(The Nether and End depend only on the lower 48-bits of the seed.)")
         };
 
         list[F_BIOME_END_1] = FilterInfo{
             CAT_END, 1, 1, 0, 0, 1, 0, MC_1_9, +1, disp++,
             ":icons/the_end.png",
-            "End biome filter 1:1",
-            "End biomes after voronoi scaling to 1:1."
+            QObject::tr("End biome filter 1:1"),
+            QObject::tr("End biomes after voronoi scaling to 1:1.")
         };
         list[F_BIOME_END_4] = FilterInfo{
             CAT_END, 1, 1, 0, 0, 4, 0, MC_1_9, +1, disp++,
             ":icons/the_end.png",
-            "End biome filter 1:4",
-            "End biomes sampled at scale 1:4. Note this is just a simple upscale of 1:16. "
-            "(The Nether and End depend only on the lower 48-bits of the seed.)"
+            QObject::tr("End biome filter 1:4"),
+            QObject::tr("End biomes sampled at scale 1:4. Note this is just a simple upscale of 1:16. "
+            "(The Nether and End depend only on the lower 48-bits of the seed.)")
         };
         list[F_BIOME_END_16] = FilterInfo{
             CAT_END, 1, 1, 0, 0, 16, 0, MC_1_9, +1, disp++,
             ":icons/the_end.png",
-            "End biome filter 1:16",
-            "End biomes with normal sampling at scale 1:16. "
-            "(The Nether and End depend only on the lower 48-bits of the seed.)"
+            QObject::tr("End biome filter 1:16"),
+            QObject::tr("End biomes with normal sampling at scale 1:16. "
+            "(The Nether and End depend only on the lower 48-bits of the seed.)")
         };
         list[F_BIOME_END_64] = FilterInfo{
             CAT_END, 1, 1, 0, 0, 64, 0, MC_1_9, +1, disp++,
             ":icons/the_end.png",
-            "End biome filter 1:64",
-            "End biomes with lossy sampling at scale 1:64. "
-            "(The Nether and End depend only on the lower 48-bits of the seed.)"
+            QObject::tr("End biome filter 1:64"),
+            QObject::tr("End biomes with lossy sampling at scale 1:64. "
+            "(The Nether and End depend only on the lower 48-bits of the seed.)")
         };
 
         list[F_SPAWN] = FilterInfo{
             CAT_OTHER, 1, 1, 0, 0, 1, 0, MC_1_0, 0, disp++,
             ":icons/spawn.png",
-            "Spawn",
+            QObject::tr("Spawn"),
             ""
         };
 
         list[F_SLIME] = FilterInfo{
             CAT_OTHER, 1, 1, 0, 0, 16, 1, MC_1_0, 0, disp++,
             ":icons/slime.png",
-            "Slime chunk",
+            QObject::tr("Slime chunk"),
             ""
         };
 
         list[F_STRONGHOLD] = FilterInfo{
             CAT_STRUCT, 1, 1, 0, 0, 1, 1, MC_1_0, 0, disp++,
             ":icons/stronghold.png",
-            "Stronghold",
+            QObject::tr("Stronghold"),
             ""
         };
 
         list[F_VILLAGE] = FilterInfo{
             CAT_STRUCT, 1, 1, 0, Village, 1, 1, MC_1_0, 0, disp++,
             ":icons/village.png",
-            "Village",
+            QObject::tr("Village"),
             ""
         };
 
         list[F_MINESHAFT] = FilterInfo{
             CAT_STRUCT, 1, 1, 0, Mineshaft, 1, 1, MC_1_0, 0, disp++,
             ":icons/mineshaft.png",
-            "Abandoned mineshaft",
+            QObject::tr("Abandoned mineshaft"),
             ""
         };
 
         list[F_DESERT] = FilterInfo{
             CAT_STRUCT, 1, 1, 0, Desert_Pyramid, 1, 1, MC_1_3, 0, disp++,
             ":icons/desert.png",
-            "Desert pyramid",
+            QObject::tr("Desert pyramid"),
             ""
         };
 
         list[F_JUNGLE] = FilterInfo{
             CAT_STRUCT, 1, 1, 0, Jungle_Pyramid, 1, 1, MC_1_3, 0, disp++,
             ":icons/jungle.png",
-            "Jungle temple",
+            QObject::tr("Jungle temple"),
             ""
         };
 
         list[F_HUT] = FilterInfo{
             CAT_STRUCT, 1, 1, 0, Swamp_Hut, 1, 1, MC_1_4, 0, disp++,
             ":icons/hut.png",
-            "Swamp hut",
+            QObject::tr("Swamp hut"),
             ""
         };
 
         list[F_MONUMENT] = FilterInfo{
             CAT_STRUCT, 1, 1, 0, Monument, 1, 1, MC_1_8, 0, disp++,
             ":icons/monument.png",
-            "Ocean monument",
+            QObject::tr("Ocean monument"),
             ""
         };
 
         list[F_IGLOO] = FilterInfo{
             CAT_STRUCT, 1, 1, 0, Igloo, 1, 1, MC_1_9, 0, disp++,
             ":icons/igloo.png",
-            "Igloo",
+            QObject::tr("Igloo"),
             ""
         };
 
         list[F_MANSION] = FilterInfo{
             CAT_STRUCT, 1, 1, 0, Mansion, 1, 1, MC_1_11, 0, disp++,
             ":icons/mansion.png",
-            "Woodland mansion",
+            QObject::tr("Woodland mansion"),
             ""
         };
 
         list[F_RUINS] = FilterInfo{
             CAT_STRUCT, 1, 1, 0, Ocean_Ruin, 1, 1, MC_1_13, 0, disp++,
             ":icons/ruins.png",
-            "Ocean ruins",
+            QObject::tr("Ocean ruins"),
             ""
         };
 
         list[F_SHIPWRECK] = FilterInfo{
             CAT_STRUCT, 1, 1, 0, Shipwreck, 1, 1, MC_1_13, 0, disp++,
             ":icons/shipwreck.png",
-            "Shipwreck",
+            QObject::tr("Shipwreck"),
             ""
         };
 
         list[F_TREASURE] = FilterInfo{
             CAT_STRUCT, 1, 1, 0, Treasure, 1, 1, MC_1_13, 0, disp++,
             ":icons/treasure.png",
-            "Buried treasure",
+            QObject::tr("Buried treasure"),
             ""
         };
 
         list[F_OUTPOST] = FilterInfo{
             CAT_STRUCT, 1, 1, 0, Outpost, 1, 1, MC_1_14, 0, disp++,
             ":icons/outpost.png",
-            "Pillager outpost",
+            QObject::tr("Pillager outpost"),
             ""
         };
 
         list[F_PORTAL] = FilterInfo{
             CAT_STRUCT, 1, 1, 0, Ruined_Portal, 1, 1, MC_1_16, 0, disp++,
             ":icons/portal.png",
-            "Ruined portal (overworld)",
+            QObject::tr("Ruined portal (overworld)"),
             ""
         };
 
         list[F_PORTALN] = FilterInfo{
             CAT_STRUCT, 1, 1, 0, Ruined_Portal_N, 1, 1, MC_1_16, -1, disp++,
             ":icons/portal.png",
-            "Ruined portal (nether)",
-            "(The Nether and End depend only on the lower 48-bits of the seed.)"
+            QObject::tr("Ruined portal (nether)"),
+            QObject::tr("(The Nether and End depend only on the lower 48-bits of the seed.)")
         };
 
         list[F_FORTRESS] = FilterInfo{
             CAT_STRUCT, 1, 1, 0, Fortress, 1, 1, MC_1_0, -1, disp++,
             ":icons/fortress.png",
-            "Nether fortress",
-            "(The Nether and End depend only on the lower 48-bits of the seed.)"
+            QObject::tr("Nether fortress"),
+            QObject::tr("(The Nether and End depend only on the lower 48-bits of the seed.)")
         };
 
         list[F_BASTION] = FilterInfo{
             CAT_STRUCT, 1, 1, 0, Bastion, 1, 1, MC_1_16, -1, disp++,
             ":icons/bastion.png",
-            "Bastion remnant",
-            "(The Nether and End depend only on the lower 48-bits of the seed.)"
+            QObject::tr("Bastion remnant"),
+            QObject::tr("(The Nether and End depend only on the lower 48-bits of the seed.)")
         };
 
         list[F_ENDCITY] = FilterInfo{
             CAT_STRUCT, 1, 1, 0, End_City, 1, 1, MC_1_9, +1, disp++,
             ":icons/endcity.png",
-            "End city",
-            "(The Nether and End depend only on the lower 48-bits of the seed.)"
+            QObject::tr("End city"),
+            QObject::tr("(The Nether and End depend only on the lower 48-bits of the seed.)")
         };
 
         list[F_GATEWAY] = FilterInfo{
             CAT_STRUCT, 1, 1, 0, End_Gateway, 1, 1, MC_1_13, +1, disp++,
             ":icons/gateway.png",
-            "End gateway",
-            "Scattered end gateway return portals, not including those "
+            QObject::tr("End gateway"),
+            QObject::tr("Scattered end gateway return portals, not including those "
             "generated when defeating the dragon. "
-            "(The Nether and End depend only on the lower 48-bits of the seed.)"
+            "(The Nether and End depend only on the lower 48-bits of the seed.)")
         };
     }
 }

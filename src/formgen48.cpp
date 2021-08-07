@@ -116,7 +116,7 @@ bool FormGen48::setList48(QString path, bool quiet)
         else
         {
             if (!quiet)
-                QMessageBox::warning(this, "Warning", "Failed to load seed list from file", QMessageBox::Ok);
+                QMessageBox::warning(this, tr("Warning"), tr("Failed to load seed list from file"), QMessageBox::Ok);
             ui->lineList48->setText("[no seeds!] " + finfo.baseName());
         }
     }
@@ -235,7 +235,7 @@ void FormGen48::updateCount()
 
     if (cnt >= MASK48+1)
     {
-        ui->labelCount->setText("all");
+        ui->labelCount->setText(tr("all"));
     }
     else
     {
@@ -266,11 +266,11 @@ void FormGen48::updateAutoUi()
     bool isqh = cond.type >= F_QH_IDEAL && cond.type <= F_QH_BARELY;
     bool isqm = cond.type >= F_QM_95 && cond.type <= F_QM_90;
     if (isqh)
-        modestr = "[Quad-hut]";
+        modestr = tr("[Quad-hut]");
     else if (isqm)
-        modestr = "[Quad-monument]";
+        modestr = tr("[Quad-monument]");
     else
-        modestr = "[None]";
+        modestr = tr("[None]");
 
     ui->labelAuto->setText(modestr);
 

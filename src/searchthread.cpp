@@ -38,31 +38,31 @@ bool SearchThread::set(
     {
         if (c.save < 1 || c.save > 99)
         {
-            QMessageBox::warning(NULL, "Warning", QString::asprintf("Condition with invalid ID [%02d].", c.save));
+            QMessageBox::warning(NULL, tr("Warning"), QString::asprintf("Condition with invalid ID [%02d].", c.save));
             return false;
         }
         if (c.relative && refbuf[c.relative] == 0)
         {
-            QMessageBox::warning(NULL, "Warning", QString::asprintf(
+            QMessageBox::warning(NULL, tr("Warning"), QString::asprintf(
                     "Condition with ID [%02d] has a broken reference position:\n"
                     "condition missing or out of order.", c.save));
             return false;
         }
         if (++refbuf[c.save] > 1)
         {
-            QMessageBox::warning(NULL, "Warning", QString::asprintf("More than one condition with ID [%02d].", c.save));
+            QMessageBox::warning(NULL, tr("Warning"), QString::asprintf("More than one condition with ID [%02d].", c.save));
             return false;
         }
         if (c.type < 0 || c.type >= FILTER_MAX)
         {
-            QMessageBox::warning(NULL, "Error", QString::asprintf("Encountered invalid filter type %d in condition ID [%02d].", c.type, c.save));
+            QMessageBox::warning(NULL, tr("Error"), QString::asprintf("Encountered invalid filter type %d in condition ID [%02d].", c.type, c.save));
             return false;
         }
         if (wi.mc < g_filterinfo.list[c.type].mcmin)
         {
             const char *mcs = mc2str(g_filterinfo.list[c.type].mcmin);
             QString s = QString::asprintf("Condition [%02d] requires a minimum Minecraft version of %s.", c.save, mcs);
-            QMessageBox::warning(NULL, "Warning", s);
+            QMessageBox::warning(NULL, tr("Warning"), s);
             return false;
         }
         if (c.type >= F_BIOME && c.type <= F_BIOME_256_OTEMP)
@@ -70,13 +70,13 @@ bool SearchThread::set(
             if ((c.exclb & (c.bfilter.riverToFind | c.bfilter.oceanToFind)) ||
                 (c.exclm & c.bfilter.riverToFindM))
             {
-                QMessageBox::warning(NULL, "Warning", QString::asprintf("Biome filter condition with ID [%02d] has contradicting flags for include and exclude.", c.save));
+                QMessageBox::warning(NULL, tr("Warning"), QString::asprintf("Biome filter condition with ID [%02d] has contradicting flags for include and exclude.", c.save));
                 return false;
             }
             // TODO: compare mc version and available biomes
             if (c.count == 0)
             {
-                QMessageBox::information(NULL, "Info", QString::asprintf("Biome filter condition with ID [%02d] specifies no biomes.", c.save));
+                QMessageBox::information(NULL, tr("Info"), QString::asprintf("Biome filter condition with ID [%02d] specifies no biomes.", c.save));
             }
         }
         if (c.type == F_TEMPS)
@@ -85,7 +85,7 @@ bool SearchThread::set(
             int h = c.z2 - c.z1 + 1;
             if (c.count > w * h)
             {
-                QMessageBox::warning(NULL, "Warning", QString::asprintf(
+                QMessageBox::warning(NULL, tr("Warning"), QString::asprintf(
                         "Temperature category condition with ID [%02d] has too many restrictions (%d) for the area (%d x %d).",
                         c.save, c.count, w, h));
                 return false;
@@ -176,7 +176,7 @@ void SearchThread::onItemDone(uint64_t itemid, uint64_t seed, bool isdone)
             int64_t idx = itemid - lastid;
             if (idx < 0 || idx >= recieved.size())
             {
-                QMessageBox::critical(parent, "Fatal Error",
+                QMessageBox::critical(parent, tr("Fatal Error"),
                                       "Encountered invalid state of seed generator. "
                                       "This is likely a issue with the search thread logic.",
                                       QMessageBox::Abort);

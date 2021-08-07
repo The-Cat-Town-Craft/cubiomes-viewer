@@ -96,6 +96,10 @@ FORMS += \
 
 RESOURCES += \
         icons.qrc \
+        lang.qrc \
         style.qrc
 
-DISTFILES +=
+DISTFILES += \
+    languages/zh_CN.qm
+
+TRANSLATIONS = languages/zh_CN.ts

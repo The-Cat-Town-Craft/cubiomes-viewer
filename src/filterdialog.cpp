@@ -53,7 +53,7 @@ FilterDialog::FilterDialog(FormConditions *parent, int mcversion, QListWidgetIte
 
     textDescription = new QTextEdit(this);
     textDescription->setSizeAdjustPolicy(QAbstractScrollArea::AdjustToContents);
-    ui->collapseDescription->init("Description", textDescription, true);
+    ui->collapseDescription->init(tr("Description"), textDescription, true);
 
     QString mcs = "MC ";
     mcs += (mc2str(mc) ? mc2str(mc) : "?");
@@ -72,7 +72,7 @@ FilterDialog::FilterDialog(FormConditions *parent, int mcversion, QListWidgetIte
             if (c.save == initcond->relative)
                 initindex = ui->comboBoxRelative->count();
         }
-        ui->comboBoxRelative->addItem(QString::asprintf("[%02d] %s", c.save, ft.name), c.save);
+        ui->comboBoxRelative->addItem(QString::asprintf("[%02d] %s", c.save, ft.name.toStdString().c_str()), c.save);
     }
     if (initindex < 0)
     {
@@ -343,17 +343,17 @@ void FilterDialog::updateMode()
 
     if (ft.step > 1)
     {
-        loc = QString::asprintf("Location (coordinates are multiplied by x%d)", ft.step);
-        areatip = QString::asprintf("From floor(-[S] / 2) x%d to floor([S] / 2) x%d on both axes (inclusive)", ft.step, ft.step);
-        lowtip = QString::asprintf("Lower bound x%d (inclusive)", ft.step);
-        uptip = QString::asprintf("Upper bound x%d (inclusive)", ft.step);
+        loc = tr("Location (coordinates are multiplied by x%d)").arg(ft.step);
+        areatip = tr("From floor(-[S] / 2) x%d to floor([S] / 2) x%d on both axes (inclusive)").arg(ft.step, ft.step);
+        lowtip = tr("Lower bound x%d (inclusive)").arg(ft.step);
+        uptip = tr("Upper bound x%d (inclusive)").arg(ft.step);
     }
     else
     {
-        loc = "Location";
-        areatip = "From floor(-[S] / 2) to floor([S] / 2) on both axes (inclusive)";
-        lowtip = QString::asprintf("Lower bound (inclusive)");
-        uptip = QString::asprintf("Upper bound (inclusive)");
+        loc = tr("Location");
+        areatip = tr("From floor(-[S] / 2) to floor([S] / 2) on both axes (inclusive)");
+        lowtip = tr("Lower bound (inclusive)");
+        uptip = tr("Upper bound (inclusive)");
     }
     ui->groupBoxPosition->setTitle(loc);
     ui->labelSquareArea->setToolTip(areatip);
@@ -448,7 +448,7 @@ void FilterDialog::updateBiomeSelection()
                 cb->setEnabled(true);
                 if (ft.layer != L_VORONOI_1)
                 {
-                    QString tip = "Generates any of:";
+                    QString tip = tr("Generates any of:");
                     for (int j = 0; j < 64; j++)
                     {
                         if (mL & (1ULL << j))
@@ -613,7 +613,7 @@ void FilterDialog::on_comboBoxCat_currentIndexChanged(int idx)
     ui->comboBoxType->clear();
 
     int slot = 0;
-    ui->comboBoxType->insertItem(slot, "Select filter", QVariant::fromValue((int)F_SELECT));
+    ui->comboBoxType->insertItem(slot, tr("Select filter"), QVariant::fromValue((int)F_SELECT));
 
     const FilterInfo *ft_list[FILTER_MAX] = {};
     const FilterInfo *ft;
