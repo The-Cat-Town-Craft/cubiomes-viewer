@@ -59,10 +59,7 @@ jobs:
         id: package
         run: |
           mkdir deploy && mv release/${{github.event.repository.name}}.exe deploy
-          windeployqt.exe --qmldir "${{ env.Qt5_DIR }}/qml" deploy/${{github.event.repository.name}}.exe
-          cd deploy
-          powershell rm -rf translations/
-          powershell Compress-Archive * ${{github.event.repository.name}}-${{ matrix.qt_arch }}.zip
+          windeployqt.exe --no-translations --no-plugins --qmldir "${{ env.Qt5_DIR }}/qml" deploy/${{github.event.repository.name}}.exe
       - uses: actions/upload-artifact@v2
         with:
           name: ${{github.event.repository.name}}-${{ matrix.qt_arch }}
