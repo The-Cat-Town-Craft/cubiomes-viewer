@@ -101,7 +101,8 @@ jobs:
         shell: cmd
         run: |
           qmake
-          mingw32-make
+          mingw32-make.exe qmake_all
+          mingw32-make.exe
       - name: package
         id: package      
         env:
