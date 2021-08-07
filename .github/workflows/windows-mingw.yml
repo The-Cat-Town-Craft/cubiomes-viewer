@@ -25,8 +25,6 @@ jobs:
             qt_ver: 5.15.2
             qt_tools: "tools_mingw,8.1.0-1-202004170606,qt.tools.win64_mingw810"
             qt_tools_mingw_install: mingw810_64
-    env:
-      targetName: cubiomes-viewer.exe
     steps:
       - name: Install Qt
         uses: jurplel/install-qt-action@v2.13.0
@@ -58,14 +56,16 @@ jobs:
           mingw32-make.exe qmake_all
           mingw32-make.exe
       - name: package
-        id: package      
-        env:
-          archiveName: ${{ matrix.qt_ver }}-${{ matrix.qt_target }}-${{ matrix.qt_arch }}
-        shell: pwsh
+        id: package
+        shell: cmd
         run: |
-          & scripts\windows-mingw-publish.ps1 ${env:archiveName} ${env:targetName}
-           $name = ${env:archiveName}
-           echo "::set-output name=packageName::$name"       
+          mkdir deploy && mv release/${{github.event.repository.name}}.exe deploy
+          windeployqt.exe --qmldir "${{ env.Qt5_DIR }}/qml" deploy/${{github.event.repository.name}}.exe
+          cp '${{ env.Qt5_DIR }}/bin/libgcc_s_seh-1.dll' ./deploy/
+          cp '${{ env.Qt5_DIR }}/bin/libwinpthread-1.dll' ./deploy/
+          cp '${{ env.Qt5_DIR }}/bin/libstdc++-6.dll' ./deploy/
+          cd deploy
+          powershell Compress-Archive * ${{ steps.package.outputs.packageName }}.zip
       - uses: actions/upload-artifact@v2
         with:
           name: ${{ steps.package.outputs.packageName }}
@@ -78,4 +78,4 @@ jobs:
           file: ${{ steps.package.outputs.packageName }}.zip
           asset_name: ${{ steps.package.outputs.packageName }}.zip
           tag: ${{ github.ref }}
-          overwrite: true 
+          overwrite: true
