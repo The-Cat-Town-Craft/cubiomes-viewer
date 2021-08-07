@@ -78,7 +78,7 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 1
-      - uses: jwsi/submodule-checkout@v1
+          submodules: recursive
       - name: Qt 5 environment configuration
         if: ${{ startsWith( matrix.qt_ver, 5 ) }}
         shell: pwsh
