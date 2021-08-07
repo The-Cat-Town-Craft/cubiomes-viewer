@@ -61,9 +61,6 @@ jobs:
         run: |
           mkdir deploy && mv release/${{github.event.repository.name}}.exe deploy
           windeployqt.exe --qmldir "${{ env.Qt5_DIR }}/qml" deploy/${{github.event.repository.name}}.exe
-          cp '${{ env.Qt5_DIR }}/bin/libgcc_s_seh-1.dll' ./deploy/
-          cp '${{ env.Qt5_DIR }}/bin/libwinpthread-1.dll' ./deploy/
-          cp '${{ env.Qt5_DIR }}/bin/libstdc++-6.dll' ./deploy/
           cd deploy
           powershell Compress-Archive * ${{ steps.package.outputs.packageName }}.zip
       - uses: actions/upload-artifact@v2
