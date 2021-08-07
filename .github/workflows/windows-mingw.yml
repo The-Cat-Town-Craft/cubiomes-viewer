@@ -62,17 +62,17 @@ jobs:
           mkdir deploy && mv release/${{github.event.repository.name}}.exe deploy
           windeployqt.exe --qmldir "${{ env.Qt5_DIR }}/qml" deploy/${{github.event.repository.name}}.exe
           cd deploy
-          powershell Compress-Archive * ${{ steps.package.outputs.packageName }}.zip
+          powershell Compress-Archive * ${{github.event.repository.name}}-${{ matrix.qt_arch }}.zip
       - uses: actions/upload-artifact@v2
         with:
-          name: ${{ steps.package.outputs.packageName }}
-          path: ${{ steps.package.outputs.packageName }}.zip
+          name: ${{github.event.repository.name}}-${{ matrix.qt_arch }}
+          path: ${{github.event.repository.name}}-${{ matrix.qt_arch }}.zip
       - name: uploadRelease
         if: startsWith(github.event.ref, 'refs/tags/')
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: ${{ steps.package.outputs.packageName }}.zip
-          asset_name: ${{ steps.package.outputs.packageName }}.zip
+          file: ${{github.event.repository.name}}-${{ matrix.qt_arch }}.zip
+          asset_name: ${{github.event.repository.name}}-${{ matrix.qt_arch }}.zip
           tag: ${{ github.ref }}
           overwrite: true
