@@ -59,7 +59,7 @@ jobs:
         id: package
         run: |
           mkdir deploy && mv release/${{github.event.repository.name}}.exe deploy
-          windeployqt.exe --no-translations --no-opengl-sw --no-system-d3d-compiler --qmldir "${{ env.Qt5_DIR }}/qml" deploy/${{github.event.repository.name}}.exe
+          windeployqt.exe --no-translations --no-opengl-sw --no-system-d3d-compiler --no-libraries --no-quick-import --qmldir "${{ env.Qt5_DIR }}/qml" deploy/${{github.event.repository.name}}.exe
       - uses: actions/upload-artifact@v2
         with:
           name: ${{github.event.repository.name}}-${{ matrix.qt_arch }}
