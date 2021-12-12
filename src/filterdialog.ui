@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>New Filter</string>
+   <string>新建过滤器</string>
   </property>
   <layout class="QGridLayout" name="gridLayout_3">
    <item row="0" column="0">
@@ -42,12 +42,12 @@
        </property>
        <item>
         <property name="text">
-         <string>Select category</string>
+         <string>选择分类</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>Algorithm helpers</string>
+         <string>算法辅助工具</string>
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
@@ -56,7 +56,7 @@
        </item>
        <item>
         <property name="text">
-         <string>Quad-structure</string>
+         <string>四联结构</string>
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
@@ -65,7 +65,7 @@
        </item>
        <item>
         <property name="text">
-         <string>Structures</string>
+         <string>结构</string>
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
@@ -74,7 +74,7 @@
        </item>
        <item>
         <property name="text">
-         <string>Biome filter</string>
+         <string>主世界生物群系过滤</string>
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
@@ -83,7 +83,7 @@
        </item>
        <item>
         <property name="text">
-         <string>Nether biomes</string>
+         <string>下界生物群系过滤</string>
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
@@ -92,7 +92,7 @@
        </item>
        <item>
         <property name="text">
-         <string>End biomes</string>
+         <string>末路之地生物群系过滤</string>
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
@@ -101,7 +101,7 @@
        </item>
        <item>
         <property name="text">
-         <string>Others</string>
+         <string>其他</string>
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
@@ -135,7 +135,7 @@
        </property>
        <item>
         <property name="text">
-         <string>Select filter</string>
+         <string>选择过滤器</string>
         </property>
        </item>
       </widget>
@@ -143,7 +143,7 @@
      <item row="0" column="1">
       <widget class="QLabel" name="labelFilterType">
        <property name="text">
-        <string>Filter type:</string>
+        <string>过滤类型:</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -163,13 +163,13 @@
        <item>
         <widget class="QGroupBox" name="groupBoxPosition">
          <property name="title">
-          <string>Location</string>
+          <string>位置</string>
          </property>
          <layout class="QGridLayout" name="gridLayout">
           <item row="4" column="0">
            <widget class="QLabel" name="labelRelative">
             <property name="text">
-             <string>Location is relative to:</string>
+             <string>相对于:</string>
             </property>
            </widget>
           </item>
@@ -187,7 +187,7 @@
            <widget class="QComboBox" name="comboBoxRelative">
             <item>
              <property name="text">
-              <string>World origin</string>
+              <string>世界原点</string>
              </property>
             </item>
            </widget>
@@ -205,7 +205,7 @@
              <string>Specify manual rectangle rather than square</string>
             </property>
             <property name="text">
-             <string>Custom area</string>
+             <string>自定义区域</string>
             </property>
             <property name="checkable">
              <bool>true</bool>
@@ -215,14 +215,14 @@
           <item row="0" column="0">
            <widget class="QLabel" name="labelSpinBox">
             <property name="text">
-             <string>Instances within area:</string>
+             <string>比例尺:</string>
             </property>
            </widget>
           </item>
           <item row="1" column="0">
            <widget class="QLabel" name="labelSquareArea">
             <property name="text">
-             <string>Within centred square of side:</string>
+             <string>位于矩形四边内:</string>
             </property>
            </widget>
           </item>
@@ -329,14 +329,14 @@
        <item>
         <widget class="QTabWidget" name="tabWidget">
          <property name="currentIndex">
-          <number>0</number>
+          <number>2</number>
          </property>
          <property name="usesScrollButtons">
           <bool>false</bool>
          </property>
          <widget class="QWidget" name="tabBiomes">
           <attribute name="title">
-           <string>Biomes</string>
+           <string>生物群系</string>
           </attribute>
           <layout class="QGridLayout" name="gridLayout_4">
            <item row="1" column="3">
@@ -355,14 +355,14 @@
               <string>Enables optimizations that trade accuracy for speed</string>
              </property>
              <property name="text">
-              <string>Approximate</string>
+              <string>近似</string>
              </property>
             </widget>
            </item>
            <item row="1" column="2">
             <widget class="QLabel" name="labelY">
              <property name="text">
-              <string>Sample at height (Y):</string>
+              <string>采样位置 (Y):</string>
              </property>
             </widget>
            </item>
@@ -376,8 +376,8 @@
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>568</width>
-                <height>249</height>
+                <width>554</width>
+                <height>261</height>
                </rect>
               </property>
               <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -396,21 +396,21 @@
              <item>
               <widget class="QPushButton" name="buttonUncheck">
                <property name="text">
-                <string>uncheck all</string>
+                <string>取消所有</string>
                </property>
               </widget>
              </item>
              <item>
               <widget class="QPushButton" name="buttonInclude">
                <property name="text">
-                <string>include all</string>
+                <string>包含所有</string>
                </property>
               </widget>
              </item>
              <item>
               <widget class="QPushButton" name="buttonExclude">
                <property name="text">
-                <string>exclude all</string>
+                <string>排除所有</string>
                </property>
               </widget>
              </item>
@@ -433,13 +433,13 @@
          </widget>
          <widget class="QWidget" name="tabTemps">
           <attribute name="title">
-           <string>Temperature Categories</string>
+           <string>温度类型</string>
           </attribute>
           <layout class="QVBoxLayout" name="verticalLayout_4">
            <item>
             <widget class="QLabel" name="label">
              <property name="text">
-              <string>Select how many entries of each temperature category are required.</string>
+              <string>选择每个温度类别需要多少个条目.</string>
              </property>
             </widget>
            </item>
@@ -463,13 +463,13 @@
          </widget>
          <widget class="QWidget" name="tabVariants">
           <attribute name="title">
-           <string>Variant</string>
+           <string>变种</string>
           </attribute>
           <layout class="QGridLayout" name="gridLayout_5">
            <item row="0" column="1">
             <widget class="QCheckBox" name="checkAbandoned">
              <property name="text">
-              <string>Abandoned</string>
+              <string>废弃</string>
              </property>
             </widget>
            </item>
@@ -479,7 +479,7 @@
               <string>Allow only structures that start with one of the selected pieces</string>
              </property>
              <property name="text">
-              <string>Filter starting piece</string>
+              <string>过滤器起始项</string>
              </property>
             </widget>
            </item>
@@ -493,8 +493,8 @@
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>568</width>
-                <height>285</height>
+                <width>554</width>
+                <height>296</height>
                </rect>
               </property>
               <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -531,24 +531,22 @@
      <item>
       <widget class="QPushButton" name="buttonCancel">
        <property name="text">
-        <string>Cancel</string>
+        <string>取消</string>
        </property>
        <property name="icon">
         <iconset theme="dialog-cancel">
-         <normaloff/>
-        </iconset>
+         <normaloff>.</normaloff>.</iconset>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QPushButton" name="buttonOk">
        <property name="text">
-        <string>Ok</string>
+        <string>好的</string>
        </property>
        <property name="icon">
         <iconset theme="dialog-ok">
-         <normaloff/>
-        </iconset>
+         <normaloff>.</normaloff>.</iconset>
        </property>
       </widget>
      </item>
