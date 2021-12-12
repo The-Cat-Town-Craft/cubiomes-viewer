@@ -20,13 +20,31 @@
    <string>Form</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <property name="margin">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
     <number>0</number>
    </property>
    <item row="0" column="0">
     <widget class="QWidget" name="widget" native="true">
      <layout class="QGridLayout" name="gridLayout_2">
-      <property name="margin">
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
        <number>0</number>
       </property>
       <item row="0" column="0" colspan="2">
@@ -36,16 +54,25 @@
         </property>
         <widget class="QWidget" name="tabAuto">
          <attribute name="title">
-          <string>Auto/None</string>
+          <string>自动/无</string>
          </attribute>
          <layout class="QGridLayout" name="gridLayout_4">
-          <property name="margin">
+          <property name="leftMargin">
+           <number>4</number>
+          </property>
+          <property name="topMargin">
+           <number>4</number>
+          </property>
+          <property name="rightMargin">
+           <number>4</number>
+          </property>
+          <property name="bottomMargin">
            <number>4</number>
           </property>
           <item row="0" column="0">
            <widget class="QLabel" name="labelAutoDesc">
             <property name="text">
-             <string>Automatically select suitable options based on conditions.</string>
+             <string>根据条件自动选择合适的选项.</string>
             </property>
            </widget>
           </item>
@@ -60,10 +87,19 @@
         </widget>
         <widget class="QWidget" name="tabQuadF">
          <attribute name="title">
-          <string>Quad-feature</string>
+          <string>四联结构</string>
          </attribute>
          <layout class="QGridLayout" name="gridLayout_5">
-          <property name="margin">
+          <property name="leftMargin">
+           <number>4</number>
+          </property>
+          <property name="topMargin">
+           <number>4</number>
+          </property>
+          <property name="rightMargin">
+           <number>4</number>
+          </property>
+          <property name="bottomMargin">
            <number>4</number>
           </property>
           <item row="1" column="0">
@@ -72,7 +108,7 @@
              <string>Value (such as a structure salt) added to the 48-bit seeds</string>
             </property>
             <property name="text">
-             <string>Add structure salt:</string>
+             <string>添加结构盐:</string>
             </property>
            </widget>
           </item>
@@ -93,7 +129,7 @@
 Applies only to feature-structures of region-size = 32 and chunk-gap = 8, in particular swamp-huts</string>
             </property>
             <property name="text">
-             <string>Restrict lower bits:</string>
+             <string>限制低位:</string>
             </property>
            </widget>
           </item>
@@ -104,27 +140,27 @@ Applies only to feature-structures of region-size = 32 and chunk-gap = 8, in par
             </property>
             <item>
              <property name="text">
-              <string>Quad-hut (ideal)</string>
+              <string>四联女巫小屋 (理想)</string>
              </property>
             </item>
             <item>
              <property name="text">
-              <string>Quad-hut (classic)</string>
+              <string>四联女巫小屋 (经典)</string>
              </property>
             </item>
             <item>
              <property name="text">
-              <string>Quad-hut (normal)</string>
+              <string>四联女巫小屋 (普通)</string>
              </property>
             </item>
             <item>
              <property name="text">
-              <string>Quad-hut (barely)</string>
+              <string>四联女巫小屋 (临界)</string>
              </property>
             </item>
             <item>
              <property name="text">
-              <string>Quad-feature (ideal, custom salt)</string>
+              <string>四联深海神殿 (理想, 自定义盐)</string>
              </property>
             </item>
            </widget>
@@ -133,7 +169,7 @@ Applies only to feature-structures of region-size = 32 and chunk-gap = 8, in par
         </widget>
         <widget class="QWidget" name="tabQuadM">
          <attribute name="title">
-          <string>Quad-monument</string>
+          <string>四联神殿</string>
          </attribute>
          <layout class="QHBoxLayout" name="horizontalLayout_2">
           <item>
@@ -143,7 +179,7 @@ Applies only to feature-structures of region-size = 32 and chunk-gap = 8, in par
 (i.e. this is a measure quality, out of 4*58*58)</string>
             </property>
             <property name="text">
-             <string>Min. monument area:</string>
+             <string>最小神殿面积:</string>
             </property>
            </widget>
           </item>
@@ -151,10 +187,19 @@ Applies only to feature-structures of region-size = 32 and chunk-gap = 8, in par
         </widget>
         <widget class="QWidget" name="tabList">
          <attribute name="title">
-          <string>Seed list</string>
+          <string>种子列表</string>
          </attribute>
          <layout class="QGridLayout" name="gridLayout_7">
-          <property name="margin">
+          <property name="leftMargin">
+           <number>4</number>
+          </property>
+          <property name="topMargin">
+           <number>4</number>
+          </property>
+          <property name="rightMargin">
+           <number>4</number>
+          </property>
+          <property name="bottomMargin">
            <number>4</number>
           </property>
           <item row="0" column="0">
@@ -163,7 +208,7 @@ Applies only to feature-structures of region-size = 32 and chunk-gap = 8, in par
              <string>Use a custom seed list as source for 48-bit seed candidates</string>
             </property>
             <property name="text">
-             <string>Load 48-bit seed list:</string>
+             <string>加载48位种子列表:</string>
             </property>
            </widget>
           </item>
@@ -199,7 +244,7 @@ Applies only to feature-structures of region-size = 32 and chunk-gap = 8, in par
              <string>Value (such as a structure salt) added to the 48-bit seeds</string>
             </property>
             <property name="text">
-             <string>Add structure salt:</string>
+             <string>添加结构盐:</string>
             </property>
            </widget>
           </item>
@@ -226,13 +271,22 @@ Applies only to feature-structures of region-size = 32 and chunk-gap = 8, in par
          <enum>QFrame::Plain</enum>
         </property>
         <layout class="QGridLayout" name="gridLayout_3">
-         <property name="margin">
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
           <number>0</number>
          </property>
          <item row="0" column="0">
           <widget class="QLabel" name="labelTranspose">
            <property name="text">
-            <string>Transpose by regions (multiplied by x512):</string>
+            <string>按区域转置 (x512 倍):</string>
            </property>
           </widget>
          </item>
@@ -255,14 +309,14 @@ Applies only to feature-structures of region-size = 32 and chunk-gap = 8, in par
          <item row="0" column="2">
           <widget class="QRadioButton" name="radioAuto">
            <property name="text">
-            <string>Auto</string>
+            <string>自动</string>
            </property>
           </widget>
          </item>
          <item row="0" column="3">
           <widget class="QRadioButton" name="radioManual">
            <property name="text">
-            <string>Manual</string>
+            <string>手动</string>
            </property>
           </widget>
          </item>
@@ -369,7 +423,7 @@ Applies only to feature-structures of region-size = 32 and chunk-gap = 8, in par
       <item row="3" column="0">
        <widget class="QLabel" name="labelSpace">
         <property name="text">
-         <string>Seeds in search space:</string>
+         <string>搜索空间中的种子:</string>
         </property>
        </widget>
       </item>
