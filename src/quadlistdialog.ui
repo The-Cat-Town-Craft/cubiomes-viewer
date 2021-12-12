@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Quad-Structure Scan</string>
+   <string>四联结构搜索</string>
   </property>
   <property name="windowIcon">
    <iconset resource="../icons.qrc">
@@ -21,7 +21,7 @@
    <item row="1" column="0">
     <widget class="QGroupBox" name="groupBox_3">
      <property name="title">
-      <string>Quad-Structures</string>
+      <string>四联结构</string>
      </property>
      <layout class="QGridLayout" name="gridLayout_8">
       <item row="0" column="0">
@@ -57,57 +57,57 @@
         </attribute>
         <column>
          <property name="text">
-          <string>Structure</string>
+          <string>结构</string>
          </property>
          <property name="toolTip">
           <string>type of quad-structure</string>
          </property>
          <property name="textAlignment">
-          <set>AlignLeft|AlignVCenter</set>
+          <set>AlignLeading|AlignVCenter</set>
          </property>
         </column>
         <column>
          <property name="text">
-          <string>Distance</string>
+          <string>距离</string>
          </property>
          <property name="toolTip">
           <string>distance to origin</string>
          </property>
          <property name="textAlignment">
-          <set>AlignLeft|AlignVCenter</set>
+          <set>AlignLeading|AlignVCenter</set>
          </property>
         </column>
         <column>
          <property name="text">
-          <string>Optimal centre</string>
+          <string>最佳中心</string>
          </property>
          <property name="toolTip">
           <string>optimal AFK location</string>
          </property>
          <property name="textAlignment">
-          <set>AlignLeft|AlignVCenter</set>
+          <set>AlignLeading|AlignVCenter</set>
          </property>
         </column>
         <column>
          <property name="text">
-          <string>Enclosing range</string>
+          <string>封闭距离</string>
          </property>
          <property name="toolTip">
           <string>distance to furthest spawning space from optimal AFK position</string>
          </property>
          <property name="textAlignment">
-          <set>AlignLeft|AlignVCenter</set>
+          <set>AlignLeading|AlignVCenter</set>
          </property>
         </column>
         <column>
          <property name="text">
-          <string>Spawn area</string>
+          <string>生成区域</string>
          </property>
          <property name="toolTip">
           <string>horizontal bounding box area inside a 128 block range</string>
          </property>
          <property name="textAlignment">
-          <set>AlignLeft|AlignVCenter</set>
+          <set>AlignLeading|AlignVCenter</set>
          </property>
         </column>
        </widget>
@@ -130,7 +130,7 @@
         <string>Seed can be an integer or text. Leave empty for a random seed.</string>
        </property>
        <property name="text">
-        <string>seed:</string>
+        <string>种子:</string>
        </property>
       </widget>
      </item>
@@ -154,7 +154,7 @@
      <item row="0" column="4">
       <widget class="QPushButton" name="buttonGo">
        <property name="text">
-        <string>Go</string>
+        <string>转到</string>
        </property>
       </widget>
      </item>
@@ -277,12 +277,11 @@
    <item row="3" column="0" alignment="Qt::AlignRight">
     <widget class="QPushButton" name="buttonClose">
      <property name="text">
-      <string>Close</string>
+      <string>关闭</string>
      </property>
      <property name="icon">
       <iconset theme="window-close">
-       <normaloff/>
-      </iconset>
+       <normaloff>.</normaloff>.</iconset>
      </property>
     </widget>
    </item>
