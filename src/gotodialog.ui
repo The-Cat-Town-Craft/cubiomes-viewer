@@ -2,14 +2,22 @@
 <ui version="4.0">
  <class>GotoDialog</class>
  <widget class="QDialog" name="GotoDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>336</width>
+    <height>113</height>
+   </rect>
+  </property>
   <property name="windowTitle">
-   <string>Coordinates</string>
+   <string>坐标</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QLabel" name="label">
      <property name="text">
-      <string>Coordinates:</string>
+      <string>坐标:</string>
      </property>
     </widget>
    </item>
@@ -56,7 +64,7 @@
      <item>
       <widget class="QLabel" name="label_2">
        <property name="text">
-        <string>Scale:</string>
+        <string>缩放:</string>
        </property>
       </widget>
      </item>
@@ -66,7 +74,7 @@
      <item>
       <widget class="QLabel" name="label_3">
        <property name="text">
-        <string>blocks per pixel</string>
+        <string>方块/像素</string>
        </property>
       </widget>
      </item>
