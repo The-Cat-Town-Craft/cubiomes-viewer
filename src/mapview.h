@@ -12,7 +12,7 @@ class MapOverlay : public QWidget
 
 public:
     explicit MapOverlay(QWidget *parent = nullptr)
-        : QWidget(parent),pos{},id(-1) {}
+        : QWidget(parent),pos{},bname(nullptr) {}
     ~MapOverlay() {}
 
 public slots:
@@ -21,7 +21,7 @@ public slots:
 
 public:
     Pos pos;
-    int id;
+    const char *bname;
 };
 
 class MapView : public QWidget
@@ -37,6 +37,7 @@ public:
     qreal getScale() const { return 1.0 / blocks2pix; }
 
     void deleteWorld();
+    void refresh();
     void setSeed(WorldInfo wi, int dim);
     void setView(qreal x, qreal z, qreal scale = 0);
 
@@ -44,6 +45,7 @@ public:
     void setShow(int stype, bool v);
     void setShowBB(bool show);
     void setSmoothMotion(bool smooth);
+    void setSetGridSpacing(int spacing);
 
     void timeout();
 
@@ -90,6 +92,7 @@ private:
     bool sshow[STRUCT_NUM];
     bool showBB;
     bool hasinertia;
+    int gridspacing;
 };
 
 #endif // MAPVIEW_H

@@ -68,6 +68,8 @@ private slots:
     void on_comboBoxMC_currentIndexChanged(int a);
     void on_seedEdit_editingFinished();
     void on_seedEdit_textChanged(const QString &arg1);
+    void on_checkLarge_toggled();
+    void on_lineY_editingFinished();
 
     void on_actionSave_triggered();
     void on_actionLoad_triggered();
@@ -84,7 +86,7 @@ private slots:
 
     void on_mapView_customContextMenuRequested(const QPoint &pos);
 
-    void on_cboxArea_toggled(bool checked);
+    void on_checkArea_toggled(bool checked);
     void on_lineRadius_editingFinished();
     void on_buttonFromVisible_clicked();
     void on_buttonAnalysis_clicked();
@@ -102,7 +104,9 @@ private slots:
     void onSelectedSeedChanged(uint64_t seed);
     void onSearchStatusChanged(bool running);
     void onStyleChanged(int style);
+    void onBiomeColorChange();
     void copyCoord();
+    void copyTeleportCommand();
 
 
 public:

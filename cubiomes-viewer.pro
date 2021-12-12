@@ -25,6 +25,7 @@ win32: {
 
 # also compile cubiomes
 QMAKE_PRE_LINK += $(MAKE) -C $$CUPATH -f $$CUPATH/makefile CFLAGS="-DSTRUCT_CONFIG_OVERRIDE=1" all
+QMAKE_CLEAN += $$CUPATH/*.o $$CUPATH/libcubiomes.a
 
 TARGET = cubiomes-viewer
 
@@ -55,7 +56,6 @@ SOURCES += \
 HEADERS += \
         $$CUPATH/finders.h \
         $$CUPATH/generator.h \
-        $$CUPATH/javarnd.h \
         $$CUPATH/layers.h \
         $$CUPATH/util.h \
         src/aboutdialog.h \
