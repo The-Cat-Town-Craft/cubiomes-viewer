@@ -22,8 +22,6 @@ bool MapOverlay::event(QEvent *e)
 void MapOverlay::paintEvent(QPaintEvent *)
 {
     QPainter painter(this);
-
-    const char *bname = biome2str(id);
     if (bname)
     {
         QString s = QString::asprintf("%s [%d,%d]", bname, pos.x, pos.z);
@@ -49,6 +47,7 @@ MapView::MapView(QWidget *parent)
 , updatecounter()
 , sshow()
 , hasinertia(true)
+, gridspacing()
 {
     memset(sshow, 0, sizeof(sshow));
 
@@ -76,6 +75,17 @@ void MapView::deleteWorld()
 {
     delete world;
     world = NULL;
+}
+
+void MapView::refresh()
+{
+    if (world)
+    {
+        WorldInfo wi = world->wi;
+        int dim = world->dim;
+        delete world;
+        world = new QWorld(wi, dim);
+    }
 }
 
 void MapView::setSeed(WorldInfo wi, int dim)
@@ -127,6 +137,13 @@ void MapView::setSmoothMotion(bool smooth)
     hasinertia = smooth;
 }
 
+void MapView::setSetGridSpacing(int spacing)
+{
+    gridspacing = spacing;
+    settingsToWorld();
+    update(2);
+}
+
 void MapView::settingsToWorld()
 {
     if (!world)
@@ -134,6 +151,7 @@ void MapView::settingsToWorld()
     for (int s = 0; s < STRUCT_NUM; s++)
         world->sshow[s] = sshow[s];
     world->showBB = showBB;
+    world->gridspacing = gridspacing;
 }
 
 qreal MapView::getX()
@@ -203,7 +221,7 @@ void MapView::paintEvent(QPaintEvent *)
         qreal bz = (cur.y() - height()/2.0) / blocks2pix + fz;
         Pos p = {(int)bx, (int)bz};
         overlay->pos = p;
-        overlay->id = world->getBiome(p);
+        overlay->bname = biome2str(world->wi.mc, world->getBiome(p));
 
         if (QThreadPool::globalInstance()->activeThreadCount() > 0 || velx || velz)
             updatecounter = 2;
@@ -225,6 +243,9 @@ void MapView::wheelEvent(QWheelEvent *e)
 {
     const qreal ang = e->angleDelta().y() / 8; // e->delta() / 8;
     blocks2pix *= pow(2, ang/100);
+    qreal scalemin = 128.0, scalemax = 1.0 / 1024.0;
+    if (blocks2pix > scalemin) blocks2pix = scalemin;
+    if (blocks2pix < scalemax) blocks2pix = scalemax;
     update();//repaint();
 }
 
