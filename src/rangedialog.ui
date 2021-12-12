@@ -2,8 +2,16 @@
 <ui version="4.0">
  <class>RangeDialog</class>
  <widget class="QDialog" name="RangeDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>294</width>
+    <height>161</height>
+   </rect>
+  </property>
   <property name="windowTitle">
-   <string>Search range</string>
+   <string>搜索距离</string>
   </property>
   <property name="windowIcon">
    <iconset resource="../icons.qrc">
@@ -13,14 +21,14 @@
    <item row="4" column="2">
     <widget class="QCheckBox" name="checkHex">
      <property name="text">
-      <string>Hexadecimal</string>
+      <string>十六进制</string>
      </property>
     </widget>
    </item>
    <item row="3" column="0">
     <widget class="QLabel" name="label_3">
      <property name="text">
-      <string>Maximum:</string>
+      <string>最大:</string>
      </property>
     </widget>
    </item>
@@ -37,14 +45,14 @@
    <item row="0" column="0" colspan="3">
     <widget class="QLabel" name="label">
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Set a value range for the incremental search. &lt;/p&gt;&lt;p&gt;Bounds are unsigned.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;为增量搜索设置一个数值范围. &lt;/p&gt;&lt;p&gt;边界条件是无符号类型.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
    </item>
    <item row="2" column="0">
     <widget class="QLabel" name="label_2">
      <property name="text">
-      <string>Minimum:</string>
+      <string>最小:</string>
      </property>
     </widget>
    </item>
